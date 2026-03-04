@@ -33,6 +33,9 @@ jobs:
          cd mod04-devops-basico/conversao-temperatura/src;
          npm install -g mocha;
          npm install 
+
+      - name: : Execução do teste
+        run: mod04-devops-basico/conversao-temperatura/test/convert.js
         
         
         
