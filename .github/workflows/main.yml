@@ -30,7 +30,7 @@ jobs:
 
       - name: Instalação do Mocha e dos pacotes para teste
         run: |
-         cd src;
+         cd mod04-devops-basico/conversao-temperatura/src;
          npm install -g mocha;
          npm install 
         
