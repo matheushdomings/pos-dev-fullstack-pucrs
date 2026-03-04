@@ -1,26 +1,11 @@
-// Video 2 - 27:30
-var mySet = new Set()
+// video 1 - 26:15
+function avaliaParidade(limiteSuperior){
+  for(let i=0; i<limiteSuperior; i++){
+    if(i%2==1)
+      console.log(i+" é um número Ímpar");
+    else
+      console.log(i+" é um número PAR");
+  } 
+}  
 
-mySet.add(0)
-console.log(mySet)
-console.log("-=-=-==-=")
-
-mySet.add(1)
-console.log(mySet)
-console.log("-=-=-==-=")
-
-mySet.add(1)
-console.log(mySet)
-console.log("-=-=-==-=")
-
-mySet.add(2)
-console.log(mySet)
-console.log("-=-=-==-=")
-
-mySet.add(3)
-console.log(mySet)
-console.log("-=-=-==-=")
-
-mySet.add(2)
-console.log(mySet)
-console.log("-=-=-==-=")
+avaliaParidade(10)
