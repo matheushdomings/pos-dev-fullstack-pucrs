@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 const NodeHog = require('nodehog');
 
 let isHealth = true;
@@ -47,7 +47,7 @@ router.put('/unreadyfor/:seconds', (req, res) => {
     res.send("OK");
 });
 
-const healthMid = function (req, res, next) {
+var healthMid = function (req, res, next) {
     
     if (isHealth) {
         next();

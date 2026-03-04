@@ -1,5 +1,5 @@
 const convert = require('../convert')
-const expect  = require("chai").expect;
+var expect  = require("chai").expect;
 
 describe('Conversor de Temperatura', () => {
 
