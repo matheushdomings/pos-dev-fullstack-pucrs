@@ -54,7 +54,7 @@ jobs:
           file: mod04-devops-basico/conversao-temperatura/src/Dockerfile
           push: true
           tags: |
-            matheusdom/aula-conversao-temperatura:v1
+            matheusdom/aula-conversao-temperatura:${{github.run_number}}
             matheusdom/aula-conversao-temperatura:latest
         
           
