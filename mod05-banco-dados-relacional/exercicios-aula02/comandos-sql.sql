@@ -54,10 +54,6 @@ SELECT placa, km
 FROM VEICULOS
 ORDER BY km;
 
-SELECT placa, km
-FROM VEICULOS
-ORDER BY km;
-
 SELECT marca, modelo
 FROM VEICULOS
 ORDER BY marca DESC, modelo ASC;
@@ -253,75 +249,41 @@ ON (AU.cod_autor = AP.cod_autor)
 JOIN PRODUTOS PROD
 ON (AP.cod_produto = PROD.cod_produto);
 
-SELECT função_agregada
-FROM nome_da_tabela
-[...]
-
-COUNT (*)
-COUNT ([ALL|DISTINCT] nome_da_coluna)
-SUM ([ALL|DISTINCT] nome_da_coluna)
-AVG ([ALL|DISTINCT] nome_da_coluna)
-MAX ([ALL|DISTINCT] nome_da_coluna)
-MIN ([ALL|DISTINCT] nome_da_coluna)
-STDDEV ([ALL|DISTINCT] nome_da_coluna)
-VARIANCE ([ALL|DISTINCT] nome_da_coluna) 
-
-SELECT AVG(preco) MEDIA FROM PRODUTOS;
-SELECT AVG(NVL(preco,0)) MEDIA FROM PRODUTOS;
-SELECT MAX(preco) FROM PRODUTOS;
-SELECT COUNT(*) NUM_CLIENTES FROM CLIENTES;
-SELECT COUNT(ddd) FROM TELEFONES; 
-
-SELECT nome_da_coluna [, ...], função_agregada [, ...]
-FROM nome_da_tabela [, ...]
-GROUP BY [ALL] nome
-ORDER BY colunas
-
 CREATE TABLE PRODS
 (
 codigo NUMERIC(3) NOT NULL,
 nome VARCHAR(50) NOT NULL,
 preco NUMERIC (5,2) NOT NULL,
-tipo CHAR(1) NULL, -- [S]uprimento, [C]omponente, [P]eriférico
+tipo CHAR(1) NULL,
 CONSTRAINT PK1 PRIMARY KEY (codigo)
 );
+
 INSERT INTO PRODS VALUES( 10, 'HD' ,200 ,'C');
 INSERT INTO PRODS VALUES( 11, 'Memoria' ,250 ,'C');
 INSERT INTO PRODS VALUES( 12, 'Impressora' ,680 ,'P');
 INSERT INTO PRODS VALUES( 13, 'Processador' ,600 ,'C');
 INSERT INTO PRODS VALUES( 14, 'DVD-RW' ,2 ,'S');
-INSERT INTO PRODS VALUES( 15, 'Papel A4' ,19 ,'S'); 
-INSERT INTO PRODS VALUES( 16, 'Scanner' ,199 ,'P'); 
+INSERT INTO PRODS VALUES( 15, 'Papel A4' ,19 ,'S');
+INSERT INTO PRODS VALUES( 16, 'Scanner' ,199 ,'P');
 
 ALTER TABLE PRODS ADD (usuario NUMBER(1) NULL);
+
 UPDATE PRODS
 SET usuario = 1
 WHERE codigo IN (10,12,13,14);
+
 UPDATE PRODS
 SET usuario = 2
 WHERE usuario IS NULL;
+
 SELECT tipo, usuario, AVG(preco)
 FROM PRODS
 GROUP BY tipo, usuario
 ORDER BY tipo, usuario;
+
 UPDATE PRODS
 SET usuario = 2
 WHERE codigo = 14;
-
-UPDATE PRODS
-SET usuario = NULL
-WHERE codigo = 13;
-
-SELECT tipo, usuario, AVG(preco)
-FROM PRODS
-GROUP BY tipo, usuario
-ORDER BY tipo, usuario;
-
-SELECT nome_da_coluna [, ...], função_agregada [, ...]
-FROM nome_da_tabela [, ...]
-GROUP BY [ALL] nome_da_coluna [,...]
-HAVING condições
-ORDER BY colunas
 
 SELECT CID.nome, COUNT(*) QTD
 FROM CIDADES CID JOIN ENDERECOS END
@@ -329,45 +291,23 @@ ON CID.cod_cidade = END.cod_cidade
 GROUP BY CID.nome
 HAVING COUNT(*) > 10;
 
-SELECT preco
-FROM produtos
-WHERE cod_produto = 9
-
-SELECT titulo
-FROM produtos
-WHERE preco > 179
-
 SELECT titulo
 FROM PRODUTOS
 WHERE preco >
 (SELECT preco
 FROM PRODUTOS
-WHERE cod_produto = 9)
-
-SELECT titulo
-FROM PRODUTOS
-WHERE importado = ‘N’ AND preco >
-(SELECT MAX(preco)
-FROM PRODUTOS
-WHERE importado = ‘S’); 
-
-SELECT ano_lançamento, AVG(preco)
-FROM PRODUTOS
-GROUP BY ano_lancamento
-HAVING AVG(preco) >
-(SELECT AVG(preco)
-FROM PRODUTOS
-WHERE ano_lancamento = trunc(sysdate, ‘YYYY’); 
+WHERE cod_produto = 9);
 
 INSERT INTO PRODS (codigo, nome, preco, tipo)
 SELECT
-cod_produto
+cod_produto,
 SUBSTR(titulo, 1, 15),
 preco,
+'L'
 FROM produtos
 WHERE
-importado = 'N’
-AND titulo LIKE 'A%’
+importado = 'N'
+AND titulo LIKE 'A%'
 AND cod_produto > 2;
 
 UPDATE PRODUTOS
@@ -382,43 +322,21 @@ WHERE codigo IN
 ( SELECT cod_produto
 FROM PRODUTOS
 WHERE
-importado = 'N’
-AND titulo LIKE 'A%’
+importado = 'N'
+AND titulo LIKE 'A%'
 AND cod_produto > 100 );
-
-SELECT nome, uf FROM CIDADES;
-
-SELECT nome FROM AUTORES;
-
-SELECT Count(*) FROM AUTORES;
-
-SELECT nome FROM AUTORES ORDER BY nome;
-
-SELECT cod_autor, nome, rowid FROM Autores;
-
-CREATE INDEX <nome do índice> ON <nome da tabela> (<nome da coluna>);
 
 CREATE INDEX idx_autores_nome ON AUTORES (nome);
 
 CREATE SEQUENCE seq_titulacoes START WITH 6 ;
-
-SELECT seq_titulações.nextval FROM DUAL; -- rodar várias vezes para observar a variação
-
-INSERT INTO TITULACOES ( cod_titulação, titulo) VALUES (seq_titulações.nextval,
-
-SELECT seq_titulações.currval FROM DUAL; 
 
 CREATE TABLE TITULACOES
 (
 cod_titulacao NUMBER(4) DEFAULT seq_titulacoes.nextval NOT NULL,
 titulo VARCHAR (20) NOT NULL,
 CONSTRAINT pk_titulacoes PRIMARY KEY (cod_titulacao)
-) ;
+);
 
-INSERT INTO TITULACOES ( titulo) VALUES (‘Bacharel’ );
-INSERT INTO TITULACOES ( titulo) VALUES (‘Especialista’ );
-INSERT INTO TITULACOES ( titulo) VALUES (‘Mestre’ );
-
-
-
-
+INSERT INTO TITULACOES ( titulo) VALUES ('Bacharel');
+INSERT INTO TITULACOES ( titulo) VALUES ('Especialista');
+INSERT INTO TITULACOES ( titulo) VALUES ('Mestre');
