@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://luisfpg.github.io/exemplo-web/web-components/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web components</title>
+  <script src="./Web components_files/date-range-input.js.download"></script>
+  <script src="./Web components_files/date-range-display.js.download"></script>
+  <script src="./Web components_files/PieMeister.min.js.download"></script>
+  <script src="./Web components_files/web-components.js.download"></script>
+</head>
+
+<body onload="inicializar()">
+  <h1>Intervalo de datas</h1>
+  <date-range-input id="datas" min="2020-01-01" max="2030-12-31"><template shadowrootmode="closed"><style>
+        :host {
+          display: inline-flex;
+          align-items: center;
+        }
+      </style><input type="date" min="2020-01-01" max="2030-12-31"><div>&nbsp;até&nbsp;</div><input type="date" min="2020-01-01" max="2030-12-31"><style></style></template></date-range-input>
+  <br><br>
+  <div id="saida"><date-range-display><template shadowrootmode="closed">Você não especificou um intervalo válido</template></date-range-display></div>
+  <br><br>
+  <h1>Gráfico de setores</h1>
+  <p>Este exemplo utiliza o componente disponível em <a href="https://pie-meister.github.io/">https://pie-meister.github.io/</a></p>
+  <pie-chart pulltext="130"><template shadowrootmode="open"><style>:host{display:inline-block}svg{width:100%}</style><svg part="svg" viewBox="0,0,1000,1000">
+    <g part="slice slice0" size="196" label="JavaScript"><path part="path path0" stroke="#88bde6" stroke-width="500" pathLength="1000" stroke-dasharray="196 804" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="196" size="196"></path><text part="text text0" x="719.4890747070312" y="189.76181030273438">JavaScript</text></g>
+    <g part="slice slice1" size="169" label="Python"><path part="path path1" stroke="#fbb258" stroke-width="500" pathLength="1000" stroke-dasharray="169 831" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="365" size="169"></path><text part="text text1" x="873.11181640625" y="572.3947143554688">Python</text></g>
+    <g part="slice slice2" size="165" label="Java"><path part="path path2" stroke="#90cd97" stroke-width="500" pathLength="1000" stroke-dasharray="165 835" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="530" size="165"></path><text part="text text2" x="623.1218872070312" y="859.6101684570312">Java</text></g>
+    <g part="slice slice3" size="123" label="C / C++"><path part="path path3" stroke="#f6aac9" stroke-width="500" pathLength="1000" stroke-dasharray="123 877" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="653" size="123"></path><text part="text text3" x="293.3534851074219" y="818.9532470703125">C / C++</text></g>
+    <g part="slice slice4" size="106" label="C#"><path part="path path4" stroke="#bfa554" stroke-width="500" pathLength="1000" stroke-dasharray="106 894" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="759" size="106"></path><text part="text text4" x="134.3366241455078" y="603.75">C#</text></g>
+    <g part="slice slice5" size="89" label="PHP"><path part="path path5" stroke="#bc99c7" stroke-width="500" pathLength="1000" stroke-dasharray="89 911" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="848" size="89"></path><text part="text text5" x="141.17025756835938" y="374.6217956542969">PHP</text></g>
+    <g part="slice slice6" size="61" label="Kotlin"><path part="path path6" stroke="#eddd46" stroke-width="500" pathLength="1000" stroke-dasharray="61 939" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="909" size="61"></path><text part="text text6" x="237.27371215820312" y="225.45484924316406">Kotlin</text></g>
+    <g part="slice slice7" size="91" label="Outros"><path part="path path7" stroke="#8c8c8c" stroke-width="500" pathLength="1000" stroke-dasharray="91 909" d="m500,500m0,-250a2,2,0,000,500a2,2,0,000-500" fill="none" stroke-dashoffset="1000" size="91"></path><text part="text text7" x="392.80828857421875" y="135.3288116455078">Outros</text></g>
+    <style>
+      [label] {
+        font-size: 3rem;
+        text-anchor: middle;
+      }
+    </style>
+  </svg></template>
+    <slice size="196" stroke="#88bde6">JavaScript</slice>
+    <slice size="169" stroke="#fbb258">Python</slice>
+    <slice size="165" stroke="#90cd97">Java</slice>
+    <slice size="123" stroke="#f6aac9">C / C++</slice>
+    <slice size="106" stroke="#bfa554">C#</slice>
+    <slice size="89" stroke="#bc99c7">PHP</slice>
+    <slice size="61" stroke="#eddd46">Kotlin</slice>
+    <slice size="91" stroke="#8c8c8c">Outros</slice>
+    <style>
+      [label] {
+        font-size: 3rem;
+        text-anchor: middle;
+      }
+    </style>
+  </pie-chart>
+  <br>
+  <a href="https://www.slashdata.co/blog/state-of-the-developer-nation-23rd-edition-the-fall-of-web-frameworks-coding-languages-blockchain-and-more">Fonte dos dados</a>
+
+
+</body></html>
