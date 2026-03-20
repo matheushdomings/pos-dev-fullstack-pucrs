@@ -1,4 +1,4 @@
-Exemplo de Microsserviços
+Exemplo de Microserviços
 =========================
 
 Estes exemplos são um pouco mais complexos. A ideia é mostrar como serviços comunicam-se entre si, bem como alguns aspectos de microsserviços.
