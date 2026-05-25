@@ -18,6 +18,8 @@ Os conteúdos envolvem estudos de front-end, back-end, bancos de dados, cloud, D
 ## Tecnologias utilizadas
 
 - JavaScript
+- HTML
+- CSS
 - React
 - Next.js
 - Node.js
